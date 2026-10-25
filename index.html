@@ -3,21 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Oxford 3000™ Pro</title>
+  <title>Oxford 3000™ Complete Academy</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --primary: #4f46e5;
-      --primary-dark: #3730a3;
-      --success: #10b981;
-      --danger: #ef4444;
-      --bg: #f1f5f9;
+      --primary: #4338ca;
+      --primary-light: #e0e7ff;
+      --success: #059669;
+      --success-light: #d1fae5;
+      --danger: #dc2626;
+      --danger-light: #fee2e2;
+      --bg: #f8fafc;
       --card: #ffffff;
-      --text-main: #0f172a;
-      --text-muted: #64748b;
+      --text: #0f172a;
+      --muted: #64748b;
     }
 
     * {
@@ -28,16 +30,15 @@
     }
 
     body {
-      font-family: 'Outfit', 'Hind Siliguri', sans-serif;
+      font-family: 'Plus Jakarta Sans', 'Hind Siliguri', sans-serif;
       background-color: var(--bg);
-      color: var(--text-main);
+      color: var(--text);
       display: flex;
       justify-content: center;
       min-height: 100vh;
-      padding: 0;
     }
 
-    .mobile-app-frame {
+    .app-viewport {
       width: 100%;
       max-width: 480px;
       background: var(--card);
@@ -48,93 +49,95 @@
       box-shadow: 0 10px 40px rgba(0,0,0,0.08);
     }
 
-    /* Top Navigation Header */
+    /* Top Sticky Bar */
     header {
-      background: linear-gradient(135deg, #4f46e5, #4338ca);
+      background: linear-gradient(135deg, #4338ca, #312e81);
       color: white;
-      padding: 16px 16px 12px;
+      padding: 14px 16px;
       position: sticky;
       top: 0;
       z-index: 50;
-      box-shadow: 0 4px 15px rgba(79, 70, 229, 0.2);
+      box-shadow: 0 4px 15px rgba(67, 56, 202, 0.2);
     }
 
-    .app-title {
-      font-size: 19px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
+    .header-content {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
     }
 
-    .badge-level {
+    .header-title {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+    }
+
+    .level-badge {
       font-size: 11px;
-      background: rgba(255,255,255,0.2);
-      padding: 3px 8px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 3px 10px;
       border-radius: 12px;
+      font-weight: 700;
     }
 
-    /* Stats Chips */
-    .status-chips {
+    .stats-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-top: 12px;
+      gap: 6px;
+      margin-top: 10px;
     }
 
-    .chip {
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(5px);
-      padding: 6px 10px;
-      border-radius: 10px;
+    .stat-pill {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 5px;
+      border-radius: 8px;
       text-align: center;
       font-size: 12px;
       font-weight: 700;
     }
 
-    /* Scrollable Tabs */
-    .tabs-wrapper {
-      background: #ffffff;
-      padding: 10px 14px;
+    /* Horizontal Nav Tabs */
+    .tabs-slider {
       display: flex;
+      background: #ffffff;
+      padding: 8px 12px;
       gap: 8px;
       overflow-x: auto;
       border-bottom: 1px solid #e2e8f0;
       scrollbar-width: none;
     }
-    .tabs-wrapper::-webkit-scrollbar { display: none; }
+    .tabs-slider::-webkit-scrollbar { display: none; }
 
-    .nav-pill {
+    .tab-item {
       flex: 0 0 auto;
-      padding: 8px 14px;
+      padding: 7px 14px;
       border-radius: 20px;
-      border: 1px solid #e2e8f0;
+      border: 1px solid #cbd5e1;
       background: #f8fafc;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 700;
-      color: var(--text-muted);
+      color: var(--muted);
       cursor: pointer;
       font-family: inherit;
       transition: all 0.2s ease;
     }
 
-    .nav-pill.active {
+    .tab-item.active {
       background: var(--primary);
       color: white;
       border-color: var(--primary);
-      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+      box-shadow: 0 2px 8px rgba(67, 56, 202, 0.25);
     }
 
-    /* Main Container */
-    .quiz-container {
+    /* Main Exercise Container */
+    .main-body {
       padding: 16px;
       flex: 1;
       display: flex;
       flex-direction: column;
     }
 
-    .progress-bar {
+    .progress-line {
       height: 6px;
       background: #e2e8f0;
       border-radius: 10px;
@@ -148,52 +151,48 @@
       transition: width 0.3s ease;
     }
 
-    /* Word Card */
-    .card-display {
+    /* Presentation Card */
+    .study-card {
       background: #ffffff;
       border: 2px solid #e2e8f0;
-      border-radius: 18px;
-      padding: 22px 16px;
+      border-radius: 16px;
+      padding: 18px 14px;
       text-align: center;
-      margin-bottom: 16px;
-      position: relative;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      margin-bottom: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
     }
 
-    .audio-play-btn {
-      background: #eef2ff;
+    .sound-button {
+      background: var(--primary-light);
       border: 1.5px solid #c7d2fe;
-      width: 50px;
-      height: 50px;
+      width: 46px;
+      height: 46px;
       border-radius: 50%;
-      font-size: 22px;
+      font-size: 20px;
       color: var(--primary);
       cursor: pointer;
-      margin: 0 auto 10px;
+      margin: 0 auto 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: 0.15s ease;
     }
-    .audio-play-btn:active { transform: scale(0.92); }
 
-    .target-word {
-      font-size: 30px;
+    .item-title {
+      font-size: 26px;
       font-weight: 800;
       color: #1e1b4b;
-      line-height: 1.2;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
       word-break: break-word;
     }
 
-    .target-pron {
-      font-size: 15px;
+    .item-subtitle {
+      font-size: 14px;
       font-weight: 600;
       color: #6366f1;
     }
 
-    /* Option Buttons */
-    .options-list {
+    /* Interactive Options List */
+    .options-grid {
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -203,469 +202,583 @@
     .option-card {
       background: #ffffff;
       border: 2px solid #e2e8f0;
-      padding: 14px 16px;
-      border-radius: 14px;
-      font-size: 16px;
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 15px;
       font-weight: 600;
-      color: var(--text-main);
+      color: var(--text);
       cursor: pointer;
       text-align: left;
-      transition: all 0.15s ease;
       font-family: inherit;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      transition: 0.15s ease;
     }
 
-    .option-card:hover {
-      border-color: #cbd5e1;
-      background: #f8fafc;
-    }
+    .option-card:hover { border-color: #cbd5e1; background: #f8fafc; }
+    .option-card:active { transform: scale(0.99); }
+    .option-card.correct { background: var(--success-light) !important; border-color: var(--success) !important; color: #065f46 !important; }
+    .option-card.wrong { background: var(--danger-light) !important; border-color: var(--danger) !important; color: #991b1b !important; }
 
-    .option-card:active { transform: scale(0.98); }
-
-    .option-card.correct {
-      background: #ecfdf5 !important;
-      border-color: var(--success) !important;
-      color: #065f46 !important;
-    }
-
-    .option-card.wrong {
-      background: #fef2f2 !important;
-      border-color: var(--danger) !important;
-      color: #991b1b !important;
-    }
-
-    /* Sentence Explanation Panel */
-    .detail-card {
+    /* Learning Card (After Answer) */
+    .learning-card {
       background: #f8fafc;
       border: 1.5px solid #cbd5e1;
-      border-radius: 14px;
+      border-radius: 12px;
       padding: 14px;
       margin-top: 14px;
       text-align: left;
       display: none;
     }
 
-    .detail-status {
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
+    .learning-status { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .learning-en { font-size: 15px; font-weight: 700; color: #1e293b; line-height: 1.4; }
+    .learning-bn { font-size: 13.5px; color: var(--muted); margin-top: 3px; }
+    .learning-rule { font-size: 13px; color: #1e40af; background: #eff6ff; padding: 8px; border-radius: 8px; margin-top: 8px; }
 
-    .sentence-english {
-      font-size: 15px;
-      font-weight: 700;
-      color: #1e293b;
-      line-height: 1.4;
-    }
-
-    .sentence-bangla {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-
-    /* Bottom Fixed Action Button */
-    .next-action-btn {
+    /* Action Next Button */
+    .next-btn {
       width: 100%;
       background: var(--primary);
       color: white;
       border: none;
-      padding: 15px;
+      padding: 14px;
       font-size: 16px;
       font-weight: 700;
-      border-radius: 14px;
+      border-radius: 12px;
       cursor: pointer;
-      margin-top: 16px;
+      margin-top: 14px;
       font-family: inherit;
-      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
       display: none;
+      box-shadow: 0 4px 12px rgba(67, 56, 202, 0.25);
     }
-    .next-action-btn:hover { background: var(--primary-dark); }
+    .next-btn:hover { background: #3730a3; }
 
-    .mode-view { display: none; width: 100%; }
-    .mode-view.active { display: block; }
+    .views { display: none; width: 100%; }
+    .views.active { display: block; }
+
+    .empty-state {
+      text-align: center;
+      padding: 40px 10px;
+      color: var(--muted);
+      font-size: 15px;
+    }
   </style>
 </head>
 <body>
 
-<div class="mobile-app-frame">
-  <!-- Top App Bar -->
+<div class="app-viewport">
   <header>
-    <div class="app-title">
-      <span>Oxford 3000™ Academy</span>
-      <span class="badge-level">A1 - B2</span>
+    <div class="header-content">
+      <span class="header-title">Oxford 3000™ Academy</span>
+      <span class="level-badge" id="moduleBadge">A1 - A2 Level</span>
     </div>
-    <div class="status-chips">
-      <div class="chip" id="scoreBadge">🎯 পয়েন্ট: 0</div>
-      <div class="chip" id="streakBadge">🔥 সঠিক: 0</div>
-      <div class="chip" id="remainingBadge">বাকি: 0</div>
+    <div class="stats-container">
+      <div class="stat-pill" id="scoreStat">🎯 পয়েন্ট: 0</div>
+      <div class="stat-pill" id="streakStat">🔥 সঠিক: 0</div>
+      <div class="stat-pill" id="remainingStat">বাকি: 0</div>
     </div>
   </header>
 
-  <!-- Horizontal Scroll Tabs -->
-  <nav class="tabs-wrapper">
-    <button class="nav-pill active" onclick="changeMode('en2bn')">English ➔ বাংলা</button>
-    <button class="nav-pill" onclick="changeMode('bn2en')">বাংলা ➔ English</button>
-    <button class="nav-pill" onclick="changeMode('sentence')">🧩 বাক্যে প্রয়োগ</button>
-    <button class="nav-pill" onclick="changeMode('confusing')">⚖️ সূক্ষ্ম পার্থক্য</button>
+  <nav class="tabs-slider">
+    <button class="tab-item active" onclick="setMode('vocab')">📖 শব্দার্থ (MCQ)</button>
+    <button class="tab-item" onclick="setMode('grammar')">🇬🇧 গ্রামার মাস্টার</button>
+    <button class="tab-item" onclick="setMode('context')">🧩 বাক্যে শূন্যস্থান</button>
+    <button class="tab-item" onclick="setMode('spoken')">🗣️ কমন ভুল সংশোধন</button>
+    <button class="tab-item" onclick="setMode('mistakes')">❌ দুর্বলতা রিভিশন</button>
   </nav>
 
-  <div class="quiz-container">
-    <div class="progress-bar"><div class="progress-fill" id="progressIndicator"></div></div>
+  <div class="main-body">
+    <div class="progress-line"><div class="progress-fill" id="progressFill"></div></div>
 
-    <!-- মোড ১ ও ২: ভোকাবুলারি কুইজ -->
-    <div id="view-quiz" class="mode-view active">
-      <div class="card-display">
-        <button class="audio-play-btn" onclick="speakIndianAudio()" title="উচ্চারণ শুনুন">🔊</button>
-        <div class="target-word" id="displayWord">Word</div>
-        <div class="target-pron" id="displayPron">উচ্চারণ</div>
+    <!-- ১. ভোকাবুলারি ভিউ -->
+    <div id="view-vocab" class="views active">
+      <div class="study-card">
+        <button class="sound-button" onclick="playCurrentAudio()" title="উচ্চারণ শুনুন">🔊</button>
+        <div class="item-title" id="vocabWord">Word</div>
+        <div class="item-subtitle" id="vocabPron">উচ্চারণ</div>
       </div>
-
-      <div class="options-list" id="quizOptionsArea"></div>
-
-      <div class="detail-card" id="quizDetailCard">
-        <div class="detail-status" id="feedbackTitle"></div>
-        <div class="sentence-english" id="detailSentEn"></div>
-        <div class="sentence-bangla" id="detailSentBn"></div>
+      <div class="options-grid" id="vocabOptions"></div>
+      <div class="learning-card" id="vocabLearning">
+        <div class="learning-status" id="vocabStatus"></div>
+        <div class="learning-en" id="vocabSentEn"></div>
+        <div class="learning-bn" id="vocabSentBn"></div>
       </div>
-
-      <button class="next-action-btn" id="quizNextAction" onclick="loadNextCard()">পরবর্তী শব্দ ➔</button>
+      <button class="next-btn" id="vocabNext" onclick="nextVocabQuestion()">পরবর্তী শব্দ ➔</button>
     </div>
 
-    <!-- মোড ৩: বাক্যে সঠিক প্রয়োগ -->
-    <div id="view-sentence" class="mode-view">
-      <div class="card-display" style="text-align: left;">
-        <div style="font-size: 13px; color: #6366f1; font-weight: 700; margin-bottom: 5px;">শূন্যস্থানে সঠিক শব্দ বসান:</div>
-        <div class="sentence-english" id="clozeEnglish" style="font-size: 18px;">Sentence</div>
-        <div class="sentence-bangla" id="clozeBangla">বাংলা অর্থ</div>
+    <!-- ২. পূর্ণাঙ্গ গ্রামার ভিউ -->
+    <div id="view-grammar" class="views">
+      <div style="font-size:12px; background:#eff6ff; color:#1e40af; padding:8px 12px; border-radius:10px; margin-bottom:10px; font-weight:700;" id="grammarTopicName">
+        📌 টপিক: Articles & Prepositions
       </div>
-      <div class="options-list" id="sentenceOptionsArea"></div>
-      <button class="next-action-btn" id="sentenceNextAction" onclick="loadSentenceCard()">পরবর্তী বাক্য ➔</button>
+      <div class="study-card" style="text-align: left;">
+        <div class="item-title" id="grammarQuestion" style="font-size:18px;">Question</div>
+        <div class="item-subtitle" id="grammarContext" style="color:var(--muted); font-weight:normal; margin-top:4px;">বাংলা অর্থ</div>
+      </div>
+      <div class="options-grid" id="grammarOptions"></div>
+      <div class="learning-card" id="grammarLearning">
+        <div class="learning-rule" id="grammarRule"></div>
+      </div>
+      <button class="next-btn" id="grammarNext" onclick="nextGrammarQuestion()">পরবর্তী নিয়ম ➔</button>
     </div>
 
-    <!-- মোড ৪: কনফিউজিং পেয়ার্স -->
-    <div id="view-confusing" class="mode-view">
-      <div style="font-size: 12px; background: #fef3c7; color: #92400e; padding: 10px; border-radius: 10px; margin-bottom: 12px;">
-        💡 <b>নিয়ম:</b> একই অর্থ হলেও বাক্যের পরিস্থিতি অনুযায়ী সঠিক শব্দটি বেছে নিন।
+    <!-- ৩. বাক্যে শূন্যস্থান ভিউ -->
+    <div id="view-context" class="views">
+      <div class="study-card" style="text-align: left;">
+        <div style="font-size:12px; color:var(--primary); font-weight:bold; margin-bottom:4px;">সঠিক শব্দটি খালি জায়গায় বসান:</div>
+        <div class="item-title" id="clozeQuestion" style="font-size:18px;">Sentence</div>
+        <div class="item-subtitle" id="clozeBangla" style="color:var(--muted); font-weight:normal; margin-top:4px;">বাংলা অর্থ</div>
       </div>
-      <div class="card-display" style="text-align: left;">
-        <div class="sentence-english" id="confusingEnglish" style="font-size: 18px;">Sentence</div>
-        <div class="sentence-bangla" id="confusingBangla">বাংলা অর্থ</div>
+      <div class="options-grid" id="clozeOptions"></div>
+      <button class="next-btn" id="clozeNext" onclick="nextClozeQuestion()">পরবর্তী বাক্য ➔</button>
+    </div>
+
+    <!-- ৪. কমন স্পোকেন মিস্টেক্স -->
+    <div id="view-spoken" class="views">
+      <div style="font-size:12px; background:#fef3c7; color:#92400e; padding:8px 12px; border-radius:10px; margin-bottom:10px; font-weight:700;">
+        💡 কমন ভুল: ইংরেজিতে কথা বলতে গিয়ে আমরা যে ভুলগুলো করি
       </div>
-      <div class="options-list" id="confusingOptionsArea"></div>
-      <div class="detail-card" id="confusingDetailCard">
-        <div style="color: #1e40af; font-size: 13px;" id="confusingRule"></div>
+      <div class="study-card" style="text-align: left;">
+        <div class="item-title" id="spokenSentence" style="font-size:18px;">Sentence</div>
+        <div class="item-subtitle" id="spokenContext" style="color:var(--muted); font-weight:normal; margin-top:4px;">বাংলা অনুবাদ</div>
       </div>
-      <button class="next-action-btn" id="confusingNextAction" onclick="loadConfusingCard()">পরবর্তী প্রশ্ন ➔</button>
+      <div class="options-grid" id="spokenOptions"></div>
+      <div class="learning-card" id="spokenLearning">
+        <div class="learning-rule" id="spokenExplanation"></div>
+      </div>
+      <button class="next-btn" id="spokenNext" onclick="nextSpokenQuestion()">পরেরটি দেখুন ➔</button>
+    </div>
+
+    <!-- ৫. দুর্বলতা রিভিশন খাতা -->
+    <div id="view-mistakes" class="views">
+      <div id="mistakeContainer"></div>
     </div>
   </div>
 </div>
 
 <script>
-  // Oxford 3000 শব্দভাণ্ডার
-  const vocabulary = [
-    { word: "ability", pron: "অ্যাবিলিটি", meaning: "সামর্থ্য বা দক্ষতা", en: "She has the ability to speak three languages.", bn: "তার তিনটি ভাষায় কথা বলার দক্ষতা আছে।" },
-    { word: "abroad", pron: "অ্যাব্রড", meaning: "বিদেশ / অন্য দেশে", en: "He went abroad for higher education.", bn: "তিনি উচ্চশিক্ষার জন্য বিদেশে গেছেন।" },
-    { word: "accept", pron: "অ্যাকসেপ্ট", meaning: "গ্রহণ করা / মেনে নেওয়া", en: "Please accept this invitation.", bn: "দয়া করে এই আমন্ত্রণটি গ্রহণ করুন।" },
-    { word: "achieve", pron: "অ্যাচিভ", meaning: "অর্জন করা / সফল হওয়া", en: "Work hard to achieve your goal.", bn: "তোমার লক্ষ্য অর্জন করতে কঠোর পরিশ্রম করো।" },
-    { word: "active", pron: "অ্যাক্টিভ", meaning: "সক্রিয় / কর্মঠ", en: "He remains active all day long.", bn: "সে সারাদিন সক্রিয় থাকে।" },
-    { word: "admire", pron: "অ্যাডমায়ার", meaning: "প্রশংসা করা / শ্রদ্ধা করা", en: "I admire your hard work.", bn: "আমি তোমার কঠোর পরিশ্রমের প্রশংসা করি।" },
+  // ১. অক্সফোর্ড মূল শব্দভাণ্ডার
+  const vocabularyData = [
+    { word: "ability", pron: "অ্যাবিলিটি", meaning: "সামর্থ্য বা দক্ষতা", en: "She has the ability to learn quickly.", bn: "তার দ্রুত শেখার সামর্থ্য আছে।" },
+    { word: "abroad", pron: "অ্যাব্রড", meaning: "বিদেশ / অন্য দেশে", en: "He went abroad for higher study.", bn: "তিনি উচ্চশিক্ষার জন্য বিদেশ গেছেন।" },
+    { word: "accept", pron: "অ্যাকসেপ্ট", meaning: "মেনে নেওয়া বা গ্রহণ করা", en: "Please accept this honest advice.", bn: "দয়া করে এই সৎ পরামর্শটি গ্রহণ করুন।" },
+    { word: "achieve", pron: "অ্যাচিভ", meaning: "অর্জন করা / সফল হওয়া", en: "Work hard to achieve your dream.", bn: "তোমার স্বপ্ন অর্জন করতে পরিশ্রম করো।" },
+    { word: "active", pron: "অ্যাক্টিভ", meaning: "সক্রিয় / কর্মঠ", en: "He is an active student.", bn: "সে একজন কর্মঠ শিক্ষার্থী।" },
+    { word: "admire", pron: "অ্যাডমায়ার", meaning: "প্রশংসা করা বা শ্রদ্ধা করা", en: "I admire your dedication.", bn: "আমি তোমার নিষ্ঠার প্রশংসা করি।" },
     { word: "advice", pron: "অ্যাডভাইস", meaning: "উপদেশ বা পরামর্শ", en: "Follow the doctor's advice.", bn: "ডাক্তারের পরামর্শ মেনে চলো।" },
-    { word: "afraid", pron: "আফ্রেইড", meaning: "ভীত / শঙ্কিত", en: "Are you afraid of dogs?", bn: "তুমি কি কুকুরকে ভয় পাও?" },
-    { word: "ancient", pron: "এইনশেন্ট", meaning: "প্রাচীন / অনেক পুরোনো", en: "They discovered an ancient city.", bn: "তারা একটি প্রাচীন শহর আবিষ্কার করেছে।" },
-    { word: "avoid", pron: "অ্যাভয়েড", meaning: "এড়িয়ে চলা / বর্জন করা", en: "Avoid driving fast in the rain.", bn: "বৃষ্টিতে দ্রুত গাড়ি চালানো এড়িয়ে চলুন।" },
-    { word: "borrow", pron: "বরো", meaning: "ধার নেওয়া", en: "Can I borrow your book for today?", bn: "আমি কি আজকের জন্য তোমার বইটি ধার নিতে পারি?" },
-    { word: "brave", pron: "ব্রেইভ", meaning: "সাহসী", en: "The brave girl saved her friend.", bn: "সাহসী মেয়েটি তার বন্ধুকে রক্ষা করেছিল।" },
-    { word: "bright", pron: "ব্রাইট", meaning: "উজ্জ্বল / আলোকময়", en: "The stars are bright tonight.", bn: "আজ রাতে তারাগুলো খুব উজ্জ্বল।" },
-    { word: "calm", pron: "কাম", meaning: "শান্ত / স্থির", en: "Stay calm during problems.", bn: "সমস্যার সময়ে নিজেকে শান্ত রাখো।" },
-    { word: "clever", pron: "ক্লেভার", meaning: "চালাক বা বুদ্ধিমান", en: "He gave a clever answer.", bn: "সে একটি বুদ্ধিমান উত্তর দিয়েছিল।" },
-    { word: "danger", pron: "ডেইঞ্জার", meaning: "বিপদ", en: "The bridge is full of danger.", bn: "সেতুটি বিপদে পূর্ণ।" },
-    { word: "decide", pron: "ডিসাইড", meaning: "সিদ্ধান্ত নেওয়া", en: "You must decide right now.", bn: "তোমাকে এখনই সিদ্ধান্ত নিতে হবে।" },
-    { word: "delicious", pron: "ডিলিশাস", meaning: "সুস্বাদু খাবার", en: "The food is very delicious.", bn: "খাবারটি খুবই সুস্বাদু।" },
-    { word: "destroy", pron: "ডেস্ট্রয়", meaning: "ধ্বংস করা", en: "Storms can destroy homes.", bn: "ঝড় ঘরবাড়ি ধ্বংস করতে পারে।" }
+    { word: "ancient", pron: "এইনশেন্ট", meaning: "প্রাচীন / অনেক পুরোনো", en: "This is an ancient library.", bn: "এটি একটি প্রাচীন লাইব্রেরি।" },
+    { word: "avoid", pron: "অ্যাভয়েড", meaning: "এড়িয়ে চলা / বর্জন করা", en: "Avoid bad company.", bn: "খারাপ সঙ্গ এড়িয়ে চলো।" },
+    { word: "borrow", pron: "বরো", meaning: "ধার নেওয়া", en: "Can I borrow your notebook?", bn: "আমি কি তোমার খাতাটি ধার নিতে পারি?" },
+    { word: "brave", pron: "ব্রেইভ", meaning: "সাহসী", en: "The brave man stood alone.", bn: "সাহসী লোকটি একা দাঁড়িয়েছিল।" },
+    { word: "calm", pron: "কাম", meaning: "শান্ত / স্থির", en: "Stay calm in difficult times.", bn: "কঠিন সময়ে নিজেকে শান্ত রাখো।" },
+    { word: "danger", pron: "ডেইঞ্জার", meaning: "বিপদ", en: "Smoking is a great danger to health.", bn: "ধূমপান স্বাস্থ্যের জন্য বড় বিপদ।" },
+    { word: "delicious", pron: "ডিলিশাস", meaning: "সুস্বাদু খাবার", en: "This dinner is delicious.", bn: "এই রাতের খাবারটি সুস্বাদু।" },
+    { word: "destroy", pron: "ডেস্ট্রয়", meaning: "ধ্বংস করা", en: "Lies can destroy trust.", bn: "মিথ্যা বিশ্বাস ধ্বংস করে দেয়।" }
   ];
 
-  // কনফিউজিং পেয়ার্স
-  const confusingQuestions = [
+  // ২. পূর্ণাঙ্গ গ্রামার প্রশ্নমালা (বাস্তব ও গুরুত্বপূর্ণ নিয়ম)
+  const grammarData = [
     {
-      sentence: "Please ______ to what I say carefully.",
-      bn: "আমি যা বলছি মনোযোগ দিয়ে শোনো।",
+      topic: "Articles (আর্টিকেল)",
+      q: "He is ______ honest police officer.",
+      context: "বাংলা: তিনি একজন সৎ পুলিশ অফিসার।",
+      correct: "an",
+      options: ["an", "a", "the", "no article"],
+      rule: "💡 নিয়ম: 'Honest' শব্দের শুরুতে ব্যঞ্জনবর্ণ 'H' থাকলেও এর উচ্চারণ 'অ' (Vowel sound)-এর মতো হয়। তাই এর আগে 'an' বসে।"
+    },
+    {
+      topic: "Articles (আর্টিকেল)",
+      q: "My brother studies at ______ university.",
+      context: "বাংলা: আমার ভাই একটি বিশ্ববিদ্যালয়ে পড়ে।",
+      correct: "a",
+      options: ["a", "an", "the", "no article"],
+      rule: "💡 নিয়ম: Vowel 'U' যদি 'ইউ' (Yu)-এর মতো উচ্চারিত হয়, তবে তার পূর্বে 'an' না বসে 'a' বসে।"
+    },
+    {
+      topic: "Prepositions of Time",
+      q: "I have been living in this city ______ 2018.",
+      context: "বাংলা: আমি ২০১৮ সাল থেকে এই শহরে বাস করছি।",
+      correct: "since",
+      options: ["since", "for", "from", "at"],
+      rule: "💡 নিয়ম: অতীত থেকে কোনো কাজ শুরু হওয়ার নির্দিষ্ট শুরুর সাল বা সময় (Point of time) বোঝাতে 'since' বসে। মোট সময় বোঝাতে 'for' বসত।"
+    },
+    {
+      topic: "Appropriate Prepositions",
+      q: "She is exceptionally good ______ English.",
+      context: "বাংলা: সে ইংরেজিতে বিশেষভাবে পারদর্শী।",
+      correct: "at",
+      options: ["at", "in", "on", "with"],
+      rule: "💡 নিয়ম: কোনো বিষয়ে দক্ষতা বোঝাতে 'Good at' হয়, 'Good in' ইংরেজি ব্যাকরণে ভুল।"
+    },
+    {
+      topic: "Subject-Verb Agreement",
+      q: "Neither of the two boys ______ present yesterday.",
+      context: "বাংলা: ছেলে দুটির কেউই গতকাল উপস্থিত ছিল না।",
+      correct: "was",
+      options: ["was", "were", "are", "have"],
+      rule: "💡 নিয়ম: 'Each', 'Every', 'Neither of', 'Either of'-এর পর সবসময় Singular Verb (was/is) বসে, plural (were) হয় না।"
+    },
+    {
+      topic: "Tenses (Present Perfect)",
+      q: "He has already ______ his morning meal.",
+      context: "বাংলা: সে ইতিমধ্যে তার সকালের নাস্তা সম্পন্ন করেছে।",
+      correct: "finished",
+      options: ["finished", "finish", "finishing", "finishes"],
+      rule: "💡 নিয়ম: Have/Has-এর পর সবসময় ভার্বের Past Participle বা V3 ফর্ম বসে।"
+    }
+  ];
+
+  // ৩. কমন স্পোকেন মিস্টেক্স ও কনফিউজিং শব্দ
+  const spokenMistakesData = [
+    {
+      q: "I ______ with your proposal.",
+      context: "বাংলা: আমি আপনার প্রস্তাবে একমত।",
+      correct: "agree",
+      options: ["agree", "am agree"],
+      explanation: "💡 ভুল সংশোধন: আমরা প্রায়ই বলি 'I am agree'—এটি ভুল। 'Agree' নিজেই একটি ভার্ব, তাই বলতে হবে 'I agree'."
+    },
+    {
+      q: "We need to ______ the real problem.",
+      context: "বাংলা: আমাদের আসল সমস্যাটি নিয়ে আলোচনা করতে হবে।",
+      correct: "discuss",
+      options: ["discuss", "discuss about"],
+      explanation: "💡 ভুল সংশোধন: 'Discuss' শব্দের ভেতরেই 'সম্পর্কে আলোচনা' ভাবটি থাকে। তাই 'discuss about' বলা যাবে না, শুধু 'discuss' হবে।"
+    },
+    {
+      q: "Can you please ______ to what I say?",
+      context: "বাংলা: আমি যা বলছি তা মনোযোগ দিয়ে শুনবে কি?",
       correct: "listen",
       options: ["listen", "hear"],
-      rule: "💡 মনে রাখবেন: মনোযোগ দিয়ে শোনার ক্ষেত্রে 'listen' বসে, কোনো আওয়াজ আপনাআপনি কানে এলে 'hear' বসে।"
+      explanation: "💡 সূক্ষ্ম পার্থক্য: কোনো শব্দ কান দিয়ে মনোযোগের সাথে শোনার জন্য 'listen to' বসে, আর শব্দ আপনাআপনি কানে পৌঁছালে 'hear' বসে।"
     },
     {
-      sentence: "Did you ______ any strange sound outside?",
-      bn: "তুমি কি বাইরে কোনো অদ্ভুত আওয়াজ শুনতে পেয়েছিলে?",
-      correct: "hear",
-      options: ["hear", "listen"],
-      rule: "💡 মনে রাখবেন: হঠাৎ শব্দ কানে আসার ক্ষেত্রে 'hear' ব্যবহৃত হয়।"
-    },
-    {
-      sentence: "Can you please ______ me the truth?",
-      bn: "তুমি কি আমাকে সত্যি কথাটি বলবে?",
-      correct: "tell",
-      options: ["tell", "say"],
-      rule: "💡 মনে রাখবেন: সরাসরি কাউকে উদ্দেশ্য করে বলার সময় 'tell' বসে (যেমন: Tell me)।"
-    },
-    {
-      sentence: "What did he ______ just now?",
-      bn: "সে এইমাত্র কী বলল?",
-      correct: "say",
-      options: ["say", "tell"],
-      rule: "💡 মনে রাখবেন: সাধারণভাবে কথা প্রকাশের ক্ষেত্রে 'say' বসে।"
-    },
-    {
-      sentence: "We sat together to ______ the match on TV.",
-      bn: "আমরা সবাই একসাথে টিভিতে খেলা দেখতে বসলাম।",
-      correct: "watch",
-      options: ["watch", "see"],
-      rule: "💡 মনে রাখবেন: চলমান পর্দা বা টিভির ক্ষেত্রে 'watch' বসে।"
-    },
-    {
-      sentence: "______ father is an honest police officer.",
-      bn: "তাদের বাবা একজন সৎ পুলিশ অফিসার।",
-      correct: "Their",
-      options: ["Their", "There"],
-      rule: "💡 মনে রাখবেন: অধিকার বা মালিকানা বোঝাতে 'Their' বসে, জায়গা বোঝাতে 'There' বসে।"
-    },
-    {
-      sentence: "I have to ______ my duty sincerely.",
-      bn: "আমাকে নিষ্ঠার সাথে আমার দায়িত্ব পালন করতে হবে।",
-      correct: "do",
-      options: ["do", "make"],
-      rule: "💡 মনে রাখবেন: দায়িত্ব বা কাজের ক্ষেত্রে 'do duty' হয়।"
+      q: "______ bag is placed on the desk?",
+      context: "বাংলা: কার ব্যাগটি টেবিলের ওপর রাখা?",
+      correct: "Whose",
+      options: ["Whose", "Who's"],
+      explanation: "💡 সূক্ষ্ম পার্থক্য: 'Whose' মানে কার (মালিকানা), আর 'Who's' হলো 'Who is'-এর সংক্ষিপ্ত রূপ।"
     }
   ];
 
-  // ১০০% র‍্যান্ডম শাফলার
-  function shuffle(arr) {
-    let result = [...arr];
-    for (let i = result.length - 1; i > 0; i--) {
+  // নিরপেক্ষ শাফলার (Fisher-Yates)
+  function shuffle(array) {
+    let arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [result[i], result[j]] = [result[j], result[i]];
+      [arr[i], arr[j]] = [arr[j], arr[i]];
     }
-    return result;
+    return arr;
   }
 
-  let activeMode = 'en2bn';
-  let deck = [];
-  let mistakeDeck = [];
-  let currentCard = null;
-  let points = 0;
+  // অ্যাপ স্টেট
+  let activeTab = 'vocab';
+  let vocabDeck = [];
+  let currentVocabItem = null;
+  let score = 0;
   let streak = 0;
 
-  function resetDeck() {
-    if (mistakeDeck.length > 0) {
-      alert("👏 রাউন্ড শেষ! আপনার ভুল হওয়া শব্দগুলো আবার অনুশীলন হবে।");
-      deck = shuffle(mistakeDeck);
-      mistakeDeck = [];
-    } else {
-      deck = shuffle(vocabulary);
+  // ব্রাউজারের লোকাল স্টোরেজে ভুল শব্দ জমা রাখা
+  let mistakeStorage = JSON.parse(localStorage.getItem('userWeakPoints')) || [];
+
+  function recordMistake(item, type) {
+    if (!mistakeStorage.some(m => m.id === (item.word || item.q))) {
+      mistakeStorage.push({ ...item, id: item.word || item.q, type: type });
+      localStorage.setItem('userWeakPoints', JSON.stringify(mistakeStorage));
     }
   }
 
-  function updateStatusHeader() {
-    document.getElementById('scoreBadge').innerText = `🎯 পয়েন্ট: ${points}`;
-    document.getElementById('streakBadge').innerText = `🔥 সঠিক: ${streak}`;
-    document.getElementById('remainingBadge').innerText = `বাকি: ${deck.length}`;
-    const completed = ((vocabulary.length - deck.length) / vocabulary.length) * 100;
-    document.getElementById('progressIndicator').style.width = `${Math.min(100, Math.max(0, completed))}%`;
+  function removeMistake(id) {
+    mistakeStorage = mistakeStorage.filter(m => m.id !== id);
+    localStorage.setItem('userWeakPoints', JSON.stringify(mistakeStorage));
+    renderMistakesView();
   }
 
-  // ভারতীয় উচ্চারণে অডিও
-  function speakIndianAudio(text) {
+  function updateAppStats() {
+    document.getElementById('scoreStat').innerText = `🎯 পয়েন্ট: ${score}`;
+    document.getElementById('streakStat').innerText = `🔥 সঠিক: ${streak}`;
+    document.getElementById('remainingStat').innerText = `বাকি: ${vocabDeck.length}`;
+    const percent = ((vocabularyData.length - vocabDeck.length) / vocabularyData.length) * 100;
+    document.getElementById('progressFill').style.width = `${Math.min(100, Math.max(0, percent))}%`;
+  }
+
+  // ভারতীয় উচ্চারণে অডিও প্লে
+  function playIndianAudio(text) {
     if (!('speechSynthesis' in window)) return;
     window.speechSynthesis.cancel();
-    const toSpeak = text || (currentCard ? currentCard.word : "");
+    const toSpeak = text || (currentVocabItem ? currentVocabItem.word : "");
     const utterance = new SpeechSynthesisUtterance(toSpeak);
     const voices = window.speechSynthesis.getVoices();
-    const indVoice = voices.find(v => v.lang === 'en-IN' || v.lang.includes('IN'));
+    const indVoice = voices.find(v => v.lang === 'en-IN' || v.name.includes('India') || v.lang.includes('IN'));
     if (indVoice) utterance.voice = indVoice;
     utterance.lang = 'en-IN';
     utterance.rate = 0.85;
     window.speechSynthesis.speak(utterance);
   }
 
-  function changeMode(mode) {
-    activeMode = mode;
-    document.querySelectorAll('.nav-pill').forEach(btn => btn.classList.remove('active'));
+  function playCurrentAudio() {
+    if (currentVocabItem) playIndianAudio(currentVocabItem.word);
+  }
+
+  // মোড পরিবর্তন
+  function setMode(tab) {
+    activeTab = tab;
+    document.querySelectorAll('.tab-item').forEach(btn => btn.classList.remove('active'));
     event.target.classList.add('active');
 
-    document.querySelectorAll('.mode-view').forEach(view => view.classList.remove('active'));
+    document.querySelectorAll('.views').forEach(view => view.classList.remove('active'));
 
-    if (mode === 'en2bn' || mode === 'bn2en') {
-      document.getElementById('view-quiz').classList.add('active');
-      loadNextCard();
-    } else if (mode === 'sentence') {
-      document.getElementById('view-sentence').classList.add('active');
-      loadSentenceCard();
-    } else if (mode === 'confusing') {
-      document.getElementById('view-confusing').classList.add('active');
-      loadConfusingCard();
+    if (tab === 'vocab') {
+      document.getElementById('view-vocab').classList.add('active');
+      document.getElementById('moduleBadge').innerText = "Oxford Vocabulary";
+      nextVocabQuestion();
+    } else if (tab === 'grammar') {
+      document.getElementById('view-grammar').classList.add('active');
+      document.getElementById('moduleBadge').innerText = "Grammar Master";
+      nextGrammarQuestion();
+    } else if (tab === 'context') {
+      document.getElementById('view-context').classList.add('active');
+      document.getElementById('moduleBadge').innerText = "Sentence Placement";
+      nextClozeQuestion();
+    } else if (tab === 'spoken') {
+      document.getElementById('view-spoken').classList.add('active');
+      document.getElementById('moduleBadge').innerText = "Spoken Mistakes";
+      nextSpokenQuestion();
+    } else if (tab === 'mistakes') {
+      document.getElementById('view-mistakes').classList.add('active');
+      document.getElementById('moduleBadge').innerText = "Mistakes Revision";
+      renderMistakesView();
     }
   }
 
-  // --- মোড ১ ও ২ লজিক ---
-  function loadNextCard() {
-    document.getElementById('quizDetailCard').style.display = 'none';
-    document.getElementById('quizNextAction').style.display = 'none';
+  // --- ১. ভোকাবুলারি লজিক ---
+  function nextVocabQuestion() {
+    document.getElementById('vocabLearning').style.display = 'none';
+    document.getElementById('vocabNext').style.display = 'none';
 
-    if (deck.length === 0) resetDeck();
-    currentCard = deck.pop();
-    updateStatusHeader();
+    if (vocabDeck.length === 0) vocabDeck = shuffle(vocabularyData);
+    currentVocabItem = vocabDeck.pop();
+    updateAppStats();
 
-    const isEn2Bn = (activeMode === 'en2bn');
-    document.getElementById('displayWord').innerText = isEn2Bn ? currentCard.word : currentCard.meaning;
-    document.getElementById('displayPron').innerText = isEn2Bn ? `উচ্চারণ: ${currentCard.pron}` : `সঠিক ইংরেজি বাছুন`;
+    document.getElementById('vocabWord').innerText = currentVocabItem.word;
+    document.getElementById('vocabPron').innerText = `বাংলা উচ্চারণ: ${currentVocabItem.pron}`;
 
-    const correct = isEn2Bn ? currentCard.meaning : currentCard.word;
-    let pool = vocabulary.filter(item => item.word !== currentCard.word);
-    pool = shuffle(pool);
-
-    let options = [correct];
+    let options = [currentVocabItem.meaning];
+    let pool = shuffle(vocabularyData.filter(v => v.word !== currentVocabItem.word));
     for (let i = 0; i < pool.length && options.length < 4; i++) {
-      options.push(isEn2Bn ? pool[i].meaning : pool[i].word);
+      options.push(pool[i].meaning);
     }
-    options = shuffle(options); // অপশনগুলো র‍্যান্ডম পজিশনে
+    options = shuffle(options); // নিরপেক্ষ অবস্থান
 
-    const container = document.getElementById('quizOptionsArea');
+    const container = document.getElementById('vocabOptions');
     container.innerHTML = options.map(opt => `
-      <button class="option-card" onclick="verifyQuizAnswer(this, '${opt}', '${correct}')">${opt}</button>
+      <button class="option-card" onclick="evalVocab(this, '${opt}')">${opt}</button>
     `).join('');
   }
 
-  function verifyQuizAnswer(btn, chosen, correct) {
-    const buttons = document.querySelectorAll('#quizOptionsArea .option-card');
+  function evalVocab(btn, selected) {
+    const buttons = document.querySelectorAll('#vocabOptions .option-card');
     buttons.forEach(b => b.disabled = true);
 
-    const isCorrect = (chosen.toLowerCase() === correct.toLowerCase());
-    const detailCard = document.getElementById('quizDetailCard');
-    const feedbackTitle = document.getElementById('feedbackTitle');
+    const isRight = (selected === currentVocabItem.meaning);
+    const statusBox = document.getElementById('vocabStatus');
 
-    if (isCorrect) {
+    if (isRight) {
       btn.classList.add('correct');
-      feedbackTitle.innerText = "🎉 অসাধারণ! সঠিক উত্তর হয়েছে।";
-      feedbackTitle.style.color = "#059669";
-      points += 10;
+      statusBox.innerText = "🎉 অসাধারণ! আপনার উত্তর একদম সঠিক।";
+      statusBox.style.color = "#059669";
+      score += 10;
       streak += 1;
-      speakIndianAudio(currentCard.word);
+      playIndianAudio(currentVocabItem.word);
     } else {
       btn.classList.add('wrong');
-      feedbackTitle.innerText = `❌ ভুল হয়েছে! সঠিক উত্তর: "${correct}"`;
-      feedbackTitle.style.color = "#dc2626";
+      statusBox.innerText = `❌ ভুল হয়েছে! সঠিক উত্তর: "${currentVocabItem.meaning}"`;
+      statusBox.style.color = "#dc2626";
       streak = 0;
-      mistakeDeck.push(currentCard);
+      recordMistake(currentVocabItem, 'Vocabulary');
       buttons.forEach(b => {
-        if (b.innerText.trim().toLowerCase() === correct.toLowerCase()) b.classList.add('correct');
+        if (b.innerText.trim() === currentVocabItem.meaning) b.classList.add('correct');
       });
     }
 
-    document.getElementById('detailSentEn').innerText = `বাক্য: ${currentCard.en}`;
-    document.getElementById('detailSentBn').innerText = `অর্থ: ${currentCard.bn}`;
-    detailCard.style.display = 'block';
-
-    document.getElementById('quizNextAction').style.display = 'block';
-    updateStatusHeader();
+    document.getElementById('vocabSentEn').innerText = `বাক্য: ${currentVocabItem.en}`;
+    document.getElementById('vocabSentBn').innerText = `বাংলা: ${currentVocabItem.bn}`;
+    document.getElementById('vocabLearning').style.display = 'block';
+    document.getElementById('vocabNext').style.display = 'block';
+    updateAppStats();
   }
 
-  // --- মোড ৩: বাক্য প্রয়োগ ---
-  let sentDeck = [];
-  let currentSentItem = null;
+  // --- ২. গ্রামার লজিক ---
+  let grammarDeck = [];
+  let currentGrammarItem = null;
 
-  function loadSentenceCard() {
-    document.getElementById('sentenceNextAction').style.display = 'none';
-    if (sentDeck.length === 0) sentDeck = shuffle(vocabulary);
-    currentSentItem = sentDeck.pop();
+  function nextGrammarQuestion() {
+    document.getElementById('grammarLearning').style.display = 'none';
+    document.getElementById('grammarNext').style.display = 'none';
 
-    const regex = new RegExp(`\\b${currentSentItem.word}\\b`, 'gi');
-    const masked = currentSentItem.en.replace(regex, '_______');
+    if (grammarDeck.length === 0) grammarDeck = shuffle(grammarData);
+    currentGrammarItem = grammarDeck.pop();
 
-    document.getElementById('clozeEnglish').innerText = masked;
-    document.getElementById('clozeBangla').innerText = `বাংলা: ${currentSentItem.bn}`;
+    document.getElementById('grammarTopicName').innerText = `📌 টপিক: ${currentGrammarItem.topic}`;
+    document.getElementById('grammarQuestion').innerText = currentGrammarItem.q;
+    document.getElementById('grammarContext').innerText = currentGrammarItem.context;
 
-    let options = [currentSentItem.word];
-    let pool = shuffle(vocabulary.filter(w => w.word !== currentSentItem.word));
+    const randomizedOpts = shuffle(currentGrammarItem.options);
+    const container = document.getElementById('grammarOptions');
+    container.innerHTML = randomizedOpts.map(opt => `
+      <button class="option-card" onclick="evalGrammar(this, '${opt}')">${opt}</button>
+    `).join('');
+  }
+
+  function evalGrammar(btn, selected) {
+    const buttons = document.querySelectorAll('#grammarOptions .option-card');
+    buttons.forEach(b => b.disabled = true);
+
+    const isRight = (selected.toLowerCase() === currentGrammarItem.correct.toLowerCase());
+
+    if (isRight) {
+      btn.classList.add('correct');
+      score += 10;
+    } else {
+      btn.classList.add('wrong');
+      recordMistake(currentGrammarItem, 'Grammar');
+      buttons.forEach(b => {
+        if (b.innerText.toLowerCase() === currentGrammarItem.correct.toLowerCase()) b.classList.add('correct');
+      });
+    }
+
+    document.getElementById('grammarRule').innerText = currentGrammarItem.rule;
+    document.getElementById('grammarLearning').style.display = 'block';
+    document.getElementById('grammarNext').style.display = 'block';
+  }
+
+  // --- ৩. বাক্যে শূন্যস্থান লজিক ---
+  let clozeDeck = [];
+  let currentClozeItem = null;
+
+  function nextClozeQuestion() {
+    document.getElementById('clozeNext').style.display = 'none';
+    if (clozeDeck.length === 0) clozeDeck = shuffle(vocabularyData);
+    currentClozeItem = clozeDeck.pop();
+
+    const regex = new RegExp(`\\b${currentClozeItem.word}\\b`, 'gi');
+    const blankSentence = currentClozeItem.en.replace(regex, '_______');
+
+    document.getElementById('clozeQuestion').innerText = blankSentence;
+    document.getElementById('clozeBangla').innerText = `বাংলা: ${currentClozeItem.bn}`;
+
+    let options = [currentClozeItem.word];
+    let pool = shuffle(vocabularyData.filter(v => v.word !== currentClozeItem.word));
     for (let i = 0; i < pool.length && options.length < 4; i++) {
       options.push(pool[i].word);
     }
     options = shuffle(options);
 
-    const container = document.getElementById('sentenceOptionsArea');
+    const container = document.getElementById('clozeOptions');
     container.innerHTML = options.map(opt => `
-      <button class="option-card" onclick="verifySentenceAnswer(this, '${opt}')">${opt}</button>
+      <button class="option-card" onclick="evalCloze(this, '${opt}')">${opt}</button>
     `).join('');
   }
 
-  function verifySentenceAnswer(btn, chosen) {
-    const buttons = document.querySelectorAll('#sentenceOptionsArea .option-card');
+  function evalCloze(btn, selected) {
+    const buttons = document.querySelectorAll('#clozeOptions .option-card');
     buttons.forEach(b => b.disabled = true);
 
-    if (chosen.toLowerCase() === currentSentItem.word.toLowerCase()) {
+    if (selected.toLowerCase() === currentClozeItem.word.toLowerCase()) {
       btn.classList.add('correct');
-      points += 10;
-      speakIndianAudio(currentSentItem.en);
+      score += 10;
+      playIndianAudio(currentClozeItem.en);
     } else {
       btn.classList.add('wrong');
+      recordMistake(currentClozeItem, 'Sentence Cloze');
       buttons.forEach(b => {
-        if (b.innerText.toLowerCase() === currentSentItem.word.toLowerCase()) b.classList.add('correct');
+        if (b.innerText.toLowerCase() === currentClozeItem.word.toLowerCase()) b.classList.add('correct');
       });
     }
-    document.getElementById('sentenceNextAction').style.display = 'block';
+    document.getElementById('clozeNext').style.display = 'block';
   }
 
-  // --- মোড ৪: কনফিউজিং পেয়ার্স ---
-  let confDeck = [];
-  let currentConfItem = null;
+  // --- ৪. স্পোকেন মিস্টেক্স লজিক ---
+  let spokenDeck = [];
+  let currentSpokenItem = null;
 
-  function loadConfusingCard() {
-    document.getElementById('confusingDetailCard').style.display = 'none';
-    document.getElementById('confusingNextAction').style.display = 'none';
+  function nextSpokenQuestion() {
+    document.getElementById('spokenLearning').style.display = 'none';
+    document.getElementById('spokenNext').style.display = 'none';
 
-    if (confDeck.length === 0) confDeck = shuffle(confusingQuestions);
-    currentConfItem = confDeck.pop();
+    if (spokenDeck.length === 0) spokenDeck = shuffle(spokenMistakesData);
+    currentSpokenItem = spokenDeck.pop();
 
-    document.getElementById('confusingEnglish').innerText = currentConfItem.sentence;
-    document.getElementById('confusingBangla').innerText = currentConfItem.bn;
+    document.getElementById('spokenSentence').innerText = currentSpokenItem.q;
+    document.getElementById('spokenContext').innerText = currentSpokenItem.context;
 
-    const randomizedOptions = shuffle(currentConfItem.options);
-
-    const container = document.getElementById('confusingOptionsArea');
-    container.innerHTML = randomizedOptions.map(opt => `
-      <button class="option-card" onclick="verifyConfusingAnswer(this, '${opt}')">${opt}</button>
+    const randomizedOpts = shuffle(currentSpokenItem.options);
+    const container = document.getElementById('spokenOptions');
+    container.innerHTML = randomizedOpts.map(opt => `
+      <button class="option-card" onclick="evalSpoken(this, '${opt}')">${opt}</button>
     `).join('');
   }
 
-  function verifyConfusingAnswer(btn, chosen) {
-    const buttons = document.querySelectorAll('#confusingOptionsArea .option-card');
+  function evalSpoken(btn, selected) {
+    const buttons = document.querySelectorAll('#spokenOptions .option-card');
     buttons.forEach(b => b.disabled = true);
 
-    if (chosen.toLowerCase() === currentConfItem.correct.toLowerCase()) {
+    if (selected.toLowerCase() === currentSpokenItem.correct.toLowerCase()) {
       btn.classList.add('correct');
-      points += 10;
+      score += 10;
     } else {
       btn.classList.add('wrong');
+      recordMistake(currentSpokenItem, 'Common Mistake');
       buttons.forEach(b => {
-        if (b.innerText.toLowerCase() === currentConfItem.correct.toLowerCase()) b.classList.add('correct');
+        if (b.innerText.toLowerCase() === currentSpokenItem.correct.toLowerCase()) b.classList.add('correct');
       });
     }
 
-    document.getElementById('confusingRule').innerText = currentConfItem.rule;
-    document.getElementById('confusingDetailCard').style.display = 'block';
-    document.getElementById('confusingNextAction').style.display = 'block';
+    document.getElementById('spokenExplanation').innerText = currentSpokenItem.explanation;
+    document.getElementById('spokenLearning').style.display = 'block';
+    document.getElementById('spokenNext').style.display = 'block';
   }
 
-  // অডিও ভয়েস ইনিশিয়ালাইজেশন
+  // --- ৫. দুর্বলতা রিভিশন খাতা রেন্ডার ---
+  function renderMistakesView() {
+    const container = document.getElementById('mistakeContainer');
+    if (mistakeStorage.length === 0) {
+      container.innerHTML = `
+        <div class="empty-state">
+          <div style="font-size:35px; margin-bottom:10px;">🌟</div>
+          <b>আপনার কোনো ভুল উত্তর জমা নেই!</b><br>
+          <span style="font-size:13px;">কুইজ প্র্যাকটিস করার সময় ভুল হলে তা নিজে থেকেই এখানে জমা হবে।</span>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = `
+      <div style="font-size:13px; color:#1e40af; background:#eff6ff; padding:10px; border-radius:10px; margin-bottom:12px;">
+        📌 মোট ভুল জমেছে: <b>${mistakeStorage.length}</b> টি। রিভিশন দিয়ে শেখা হয়ে গেলে 'শিখে ফেলেছি' বাটনে চাপ দিন।
+      </div>
+    ` + mistakeStorage.map(item => `
+      <div class="study-card" style="text-align:left; margin-bottom:10px; padding:14px;">
+        <div style="font-size:11px; color:#dc2626; font-weight:bold; text-transform:uppercase;">${item.type}</div>
+        <div style="font-size:18px; font-weight:800; color:#1e1b4b; margin:3px 0;">${item.word || item.q}</div>
+        <div style="font-size:14px; color:#059669; font-weight:600;">সঠিক উত্তর: ${item.meaning || item.correct}</div>
+        <button onclick="removeMistake('${item.id}')" style="margin-top:8px; background:#059669; color:white; border:none; padding:6px 12px; border-radius:6px; font-size:12px; font-weight:bold; cursor:pointer;">
+          ✔️ শিখে ফেলেছি (বাদ দিন)
+        </button>
+      </div>
+    `).join('');
+  }
+
+  // অডিও সার্ভিস
   if ('speechSynthesis' in window) {
     window.speechSynthesis.onvoiceschanged = () => {
       window.speechSynthesis.getVoices();
     };
   }
 
-  resetDeck();
-  loadNextCard();
+  // শুরু
+  setMode('vocab');
 </script>
 </body>
 </html>
